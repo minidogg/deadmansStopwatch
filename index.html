@@ -23,7 +23,7 @@
 
         // using onclick instead of event listeners is kinda scuffed but we ball
         document.querySelector("button").onclick = ()=>{
-            document.querySelector('button').textContent = "User Input"
+            document.querySelector('button').remove()
 
             window.addEventListener("keyup", ()=>{
                 timeSinceLastInput = time
