@@ -6,6 +6,33 @@
     <title>Deadman's Stopwatch</title>
 </head>
 <body>
-    
+    <button>Start Time</button>
+    <h1></h1>
+    <p>Accurate within 5 seconds</p>
+    <script>
+        let time = 0;
+        let timeSinceLastInput = 0
+        let h1 = document.querySelector("h1")
+
+        // using onclick instead of event listeners is kinda scuffed but we ball
+        document.querySelector("button").onclick = ()=>{
+            document.querySelector('button').textContent = "User Input"
+
+            // Need to switch input to keyboard for more convenience 
+            document.querySelector("button").onclick = ()=>{
+                timeSinceLastInput = time
+            }
+
+            // Prob should do delta time stuff but im lazy
+            // Was gonna do a tenth of a second but floats are weird.
+            let interval = setInterval(()=>{
+                time+=1;
+                h1.textContent = "Stopwatch seconds: "+time
+                if(time>=timeSinceLastInput+5){
+                    clearInterval(interval)
+                }
+            }, 1000)
+        }
+    </script>
 </body>
 </html>
