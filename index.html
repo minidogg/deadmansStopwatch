@@ -15,7 +15,7 @@
 <body>
     <button>Start Time</button>
     <h1>Stopwatch not started yet</h1>
-    <p>Accurate within 5 seconds</p>
+    <p>Accurate within 3 seconds</p>
     <script>
         let time = 0;
         let timeSinceLastInput = 0
@@ -23,19 +23,18 @@
 
         // using onclick instead of event listeners is kinda scuffed but we ball
         document.querySelector("button").onclick = ()=>{
-            document.querySelector('button').textContent = "User Input"
+            document.querySelector('button').remove()
 
-            // Need to switch input to keyboard for more convenience 
-            document.querySelector("button").onclick = ()=>{
+            window.addEventListener("keyup", ()=>{
                 timeSinceLastInput = time
-            }
+            })
 
             // Prob should do delta time stuff but im lazy
             // Was gonna do a tenth of a second but floats are weird.
             let interval = setInterval(()=>{
                 time+=1;
                 h1.textContent = "Stopwatch seconds: "+time
-                if(time>=timeSinceLastInput+5){
+                if(time>=timeSinceLastInput+3){
                     clearInterval(interval)
                 }
             }, 1000)
