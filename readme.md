@@ -1,0 +1,1 @@
+It's a stopwatch that stops as soon as there is no user input for a specific duration of time.
